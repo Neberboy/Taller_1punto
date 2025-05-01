@@ -46,13 +46,13 @@ void registrarCombates(char nombres[][30], int puntos[]) {
 }
 
 void determinarFinalistas(char nombres[][30], int puntos[], char finalistas[][30]) {
-    int primero_idx = 0, segundo_idx = 1;
+    int primero_idx = -1, segundo_idx = -1;
 
-    for (int i = 2; i < NUM_COMPETIDORES; i++) {
-        if (puntos[i] > puntos[primero_idx]) {
+    for (int i = 0; i < NUM_COMPETIDORES; i++) {
+        if (primero_idx == -1 || puntos[i] > puntos[primero_idx]) {
             segundo_idx = primero_idx;
             primero_idx = i;
-        } else if (puntos[i] > puntos[segundo_idx]) {
+        } else if (segundo_idx == -1 || puntos[i] > puntos[segundo_idx]) {
             segundo_idx = i;
         }
     }
